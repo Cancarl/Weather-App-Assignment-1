@@ -1,4 +1,4 @@
-#Assignment 1 Weather app by Carlos Canales
+#Assignment 1 Weather app by Carlos Canales Edited 1/11/2025
 import requests
 import tkinter
 import customtkinter
@@ -9,7 +9,6 @@ def GetData():
     Api = '3fc4eeee3662c136aa450763fc7e54b8'
 
     zipcode = entryBlock.get()
-    exclude = "minute, hourly"
     weatherData = requests.get(
         f"https://api.openweathermap.org/data/2.5/weather?zip={zipcode}&units=imperial&APPID={Api}")
 
@@ -30,8 +29,6 @@ def GetData():
         days.append(round(data2['list'][i]['main']['temp']))
         descrip.append(data2['list'][i]['weather'][0]['main'])
 
-    # weather = weatherData.json()['weather'][0]['description']
-    # temper = weatherData.json()['main']['temp']
     city.configure(text="5 Day Forcast for the City of " + name +".")
     OutputWeather.configure(text = "Weather: " + descrip[0] + " | " + descrip[1] + " | "+ descrip[2] + " | "+ descrip[3] + " | "+ descrip[4])
     OutputTemp.configure(text = "Temperature: " + str(days[0]) + "°F | "+ str(days[1]) + "°F | "+ str(days[2]) + "°F | "+ str(days[3]) + "°F | "+ str(days[4]) + "°F")
